@@ -115,7 +115,9 @@ class HomeScreen extends StatelessWidget {
                         ActionButton(
                           icon: Icons.save_alt,
                           label: l10n.firstButton,
-                          onPressed: () => xmlProvider.saveFirstFile(),
+                          onPressed: xmlProvider.areFieldsIdentical
+                              ? () => xmlProvider.saveFirstFile()
+                              : null,
                           backgroundColor: colorScheme.primaryContainer,
                         ),
                       ],
@@ -187,7 +189,9 @@ class HomeScreen extends StatelessWidget {
                         ActionButton(
                           icon: Icons.arrow_back,
                           label: l10n.secondButton,
-                          onPressed: () => xmlProvider.mergeFields(),
+                          onPressed: xmlProvider.secondFilePath != null
+                              ? () => xmlProvider.mergeFields()
+                              : null,
                           backgroundColor: colorScheme.tertiaryContainer,
                         ),
                       ],
