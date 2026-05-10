@@ -12,10 +12,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = context.watch<ThemeProvider>();
+    final isDarkMode = context.select((ThemeProvider p) => p.isDarkMode);
     final localeProvider = context.watch<LocaleProvider>();
     final xmlProvider = context.watch<XmlProvider>();
     final l10n = AppLocalizations.of(context)!;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       appBar: AppBar(
@@ -34,17 +35,9 @@ class HomeScreen extends StatelessWidget {
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-
-          // Кнопка переключения темы
           IconButton(
-            icon: Icon(
-              themeProvider.isDarkMode
-                  ? Icons.wb_sunny
-                  : Icons.nightlight_round,
-            ),
-            onPressed: () {
-              context.read<ThemeProvider>().toggleTheme();
-            },
+            icon: Icon(isDarkMode ? Icons.wb_sunny : Icons.nightlight_round),
+            onPressed: () => context.read<ThemeProvider>().toggleTheme(),
           ),
         ],
       ),
@@ -64,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                         InfoField(
                           label: l10n.sellerOrganization,
                           value: xmlProvider.firstXmlDto.sellerName,
-                          errorColor: Colors.yellow,
+                          isWarning: true,
                           isValid:
                               xmlProvider.firstXmlDto.sellerName ==
                               xmlProvider.secondXmlDto.sellerName,
@@ -72,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                         InfoField(
                           label: l10n.buyerOrganization,
                           value: xmlProvider.firstXmlDto.buyerName,
-                          errorColor: Colors.yellow,
+                          isWarning: true,
                           isValid:
                               xmlProvider.firstXmlDto.buyerName ==
                               xmlProvider.secondXmlDto.buyerName,
@@ -88,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                           label: l10n.invoiceNumber,
                           value: xmlProvider.firstXmlDto.invoiceNumber,
                           isValid:
-                          xmlProvider.firstXmlDto.invoiceNumber ==
+                              xmlProvider.firstXmlDto.invoiceNumber ==
                               xmlProvider.secondXmlDto.invoiceNumber,
                         ),
                         InfoField(
@@ -101,9 +94,9 @@ class HomeScreen extends StatelessWidget {
                         InfoField(
                           label: l10n.date,
                           value: xmlProvider.firstXmlDto.date,
-                          errorColor: Colors.yellow,
+                          isWarning: true,
                           isValid:
-                          xmlProvider.firstXmlDto.date ==
+                              xmlProvider.firstXmlDto.date ==
                               xmlProvider.secondXmlDto.date,
                         ),
                         const SizedBox(height: 20),
@@ -140,46 +133,46 @@ class HomeScreen extends StatelessWidget {
                         InfoField(
                           label: l10n.sellerOrganization,
                           value: xmlProvider.secondXmlDto.sellerName,
-                          errorColor: Colors.yellow,
+                          isWarning: true,
                           isValid:
-                          xmlProvider.firstXmlDto.sellerName ==
+                              xmlProvider.firstXmlDto.sellerName ==
                               xmlProvider.secondXmlDto.sellerName,
                         ),
                         InfoField(
                           label: l10n.buyerOrganization,
                           value: xmlProvider.secondXmlDto.buyerName,
-                          errorColor: Colors.yellow,
+                          isWarning: true,
                           isValid:
-                          xmlProvider.firstXmlDto.buyerName ==
+                              xmlProvider.firstXmlDto.buyerName ==
                               xmlProvider.secondXmlDto.buyerName,
                         ),
                         InfoField(
                           label: l10n.documentNumber,
                           value: xmlProvider.secondXmlDto.docNumber,
                           isValid:
-                          xmlProvider.firstXmlDto.docNumber ==
+                              xmlProvider.firstXmlDto.docNumber ==
                               xmlProvider.secondXmlDto.docNumber,
                         ),
                         InfoField(
-                      label: l10n.invoiceNumber,
-                      value: xmlProvider.secondXmlDto.invoiceNumber,
-                      isValid:
-                      xmlProvider.firstXmlDto.invoiceNumber ==
-                          xmlProvider.secondXmlDto.invoiceNumber,
-                    ),
+                          label: l10n.invoiceNumber,
+                          value: xmlProvider.secondXmlDto.invoiceNumber,
+                          isValid:
+                              xmlProvider.firstXmlDto.invoiceNumber ==
+                              xmlProvider.secondXmlDto.invoiceNumber,
+                        ),
                         InfoField(
                           label: l10n.totalAmount,
                           value: xmlProvider.secondXmlDto.totalAmount,
                           isValid:
-                          xmlProvider.firstXmlDto.totalAmount ==
+                              xmlProvider.firstXmlDto.totalAmount ==
                               xmlProvider.secondXmlDto.totalAmount,
                         ),
                         InfoField(
                           label: l10n.date,
                           value: xmlProvider.secondXmlDto.date,
-                          errorColor: Colors.yellow,
+                          isWarning: true,
                           isValid:
-                          xmlProvider.firstXmlDto.date ==
+                              xmlProvider.firstXmlDto.date ==
                               xmlProvider.secondXmlDto.date,
                         ),
                         const SizedBox(height: 20),
@@ -200,7 +193,9 @@ class HomeScreen extends StatelessWidget {
                               : null,
                           icon: const Icon(Icons.arrow_back),
                           label: Text(l10n.secondButton),
-                          style: ElevatedButton.styleFrom(backgroundColor: Colors.blue.shade50),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue.shade50,
+                          ),
                         ),
                       ],
                     ),

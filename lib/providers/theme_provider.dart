@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../core/theme.dart'; // Импортируем ваши настройки
 
 class ThemeProvider extends ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.light;
@@ -7,12 +8,14 @@ class ThemeProvider extends ChangeNotifier {
 
   bool get isDarkMode => _themeMode == ThemeMode.dark;
 
+  ThemeData get lightTheme => AppTheme.createTheme(Brightness.light);
+
+  ThemeData get darkTheme => AppTheme.createTheme(Brightness.dark);
+
   void toggleTheme() {
-    if (_themeMode == ThemeMode.light) {
-      _themeMode = ThemeMode.dark;
-    } else {
-      _themeMode = ThemeMode.light;
-    }
+    _themeMode = _themeMode == ThemeMode.light
+        ? ThemeMode.dark
+        : ThemeMode.light;
     notifyListeners();
   }
 }
