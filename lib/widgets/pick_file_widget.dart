@@ -32,6 +32,7 @@ class _FileSelectorCardState extends State<FileSelectorCard> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return DropTarget(
       onDragEntered: (details) => setState(() => _isDragging = true),
       onDragExited: (details) => setState(() => _isDragging = false),
@@ -46,7 +47,7 @@ class _FileSelectorCardState extends State<FileSelectorCard> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: _isDragging ? Colors.blue : Colors.transparent,
+            color: _isDragging ? colorScheme.primary : Colors.transparent,
             width: 2,
           ),
         ),
@@ -57,16 +58,22 @@ class _FileSelectorCardState extends State<FileSelectorCard> {
             isThreeLine: true,
             leading: CircleAvatar(
               backgroundColor: widget.path == null
-                  ? Colors.grey[200]
-                  : widget.color,
+                  ? colorScheme.surfaceContainerHighest
+                  : colorScheme.tertiaryContainer,
               child: Icon(
                 widget.icon,
-                color: widget.path == null ? Colors.grey : Colors.black87,
+                color: widget.path == null
+                    ? colorScheme.onSurfaceVariant
+                    : colorScheme.onSurface,
               ),
             ),
             title: Text(
               widget.title,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: colorScheme.onSurface,
+              ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -82,7 +89,7 @@ class _FileSelectorCardState extends State<FileSelectorCard> {
             ),
             trailing: Icon(
               widget.path == null ? Icons.add_circle_outline : Icons.sync,
-              color: Colors.blueGrey.withOpacity(0.5),
+              color: colorScheme.onSurfaceVariant.withValues(alpha: 0.5),
             ),
           ),
         ),
