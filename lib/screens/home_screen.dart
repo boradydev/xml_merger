@@ -4,6 +4,7 @@ import '../l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../providers/locale_provider.dart';
 import '../providers/xml_provider.dart'; // Импортируем провайдер языка
+import '../widgets/action_button_widget.dart';
 import '../widgets/info_field.dart';
 import '../widgets/pick_file_widget.dart';
 
@@ -111,15 +112,11 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.blue.shade100,
                         ),
                         const SizedBox(height: 20),
-                        ElevatedButton.icon(
-                          onPressed: xmlProvider.areFieldsIdentical
-                              ? () => xmlProvider.saveFirstFile()
-                              : null,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.orange.shade100,
-                          ),
-                          icon: const Icon(Icons.save_alt),
-                          label: Text(l10n.firstButton),
+                        ActionButton(
+                          icon: Icons.save_alt,
+                          label: l10n.firstButton,
+                          onPressed: () => xmlProvider.saveFirstFile(),
+                          backgroundColor: colorScheme.primaryContainer,
                         ),
                       ],
                     ),
@@ -187,15 +184,11 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.green.shade100,
                         ),
                         const SizedBox(height: 20),
-                        ElevatedButton.icon(
-                          onPressed: xmlProvider.secondFilePath != null
-                              ? () => xmlProvider.mergeFields()
-                              : null,
-                          icon: const Icon(Icons.arrow_back),
-                          label: Text(l10n.secondButton),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue.shade50,
-                          ),
+                        ActionButton(
+                          icon: Icons.arrow_back,
+                          label: l10n.secondButton,
+                          onPressed: () => xmlProvider.mergeFields(),
+                          backgroundColor: colorScheme.tertiaryContainer,
                         ),
                       ],
                     ),
