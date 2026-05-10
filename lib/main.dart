@@ -21,7 +21,7 @@ Future<void> main() async {
       size: Size(1000, 600),
       minimumSize: Size(1000, 600),
       center: true,
-      title: "XML Merger Pro",
+      title: "XML Merger",
     );
 
     windowManager.waitUntilReadyToShow(windowOptions, () async {
@@ -50,7 +50,11 @@ class MyApp extends StatelessWidget {
     final localeProvider = context.watch<LocaleProvider>();
 
     return MaterialApp(
-      title: 'XML Merger',
+      onGenerateTitle: (context) {
+        final title = AppLocalizations.of(context)!.appTitle;
+        windowManager.setTitle(title);
+        return title;
+      },
       debugShowCheckedModeBanner: false,
 
       locale: localeProvider.locale,

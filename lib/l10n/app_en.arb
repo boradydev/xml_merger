@@ -1,0 +1,14 @@
+{
+  "appTitle": "XML Merger",
+  "cardFirstTitle": "Ozon UPD",
+  "cardSecondTitle": "1c UPD",
+  "sellerOrganization": "Seller Organization",
+  "buyerOrganization": "Buyer Organization",
+  "documentNumber": "Document Number",
+  "invoiceNumber": "Invoice Number",
+  "totalAmount": "Total Amount (with VAT)",
+  "date": "Date",
+  "firstButton": "Save",
+  "secondButton": "Merge fields from 1c",
+  "cardCommonDescription": "Drop file here or click to select"
+}

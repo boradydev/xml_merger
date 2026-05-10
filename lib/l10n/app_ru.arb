@@ -1,0 +1,14 @@
+{
+  "appTitle": "XML Слияние",
+  "cardFirstTitle": "Озон УПД",
+  "cardSecondTitle": "1с УПД",
+  "sellerOrganization": "Организация-продавец",
+  "buyerOrganization": "Организация-покупатель",
+  "documentNumber": "Номер документа",
+  "invoiceNumber": "Номер отгрузки",
+  "totalAmount": "Итоговая сумма (с НДС)",
+  "date": "Дата",
+  "firstButton": "Сохранить",
+  "secondButton": "Перенести данные из 1c",
+  "cardCommonDescription": "Перетащите файл сюда или нажмите для выбора"
+}
