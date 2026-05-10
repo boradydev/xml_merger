@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:window_manager/window_manager.dart';
 import 'package:xml_merger/providers/xml_provider.dart';
 
 import 'l10n/app_localizations.dart';
@@ -8,7 +11,24 @@ import 'providers/locale_provider.dart';
 
 import 'screens/home_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await windowManager.ensureInitialized();
+
+  if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
+    WindowOptions windowOptions = const WindowOptions(
+      size: Size(1000, 600),
+      minimumSize: Size(1000, 600),
+      center: true,
+      title: "XML Merger Pro",
+    );
+
+    windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.show();
+      await windowManager.focus();
+    });
+  }
   runApp(
     MultiProvider(
       providers: [
