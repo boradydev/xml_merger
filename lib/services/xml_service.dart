@@ -3,42 +3,52 @@ import 'dart:io';
 import 'package:windows1251/windows1251.dart';
 import 'package:xml/xml.dart';
 
-/// Сервис для низкоуровневой работы с XML-документами
 class XmlService {
-  /// Читает файл по пути и возвращает объект XmlDocument
+  String _detectEncoding(List<int> bytes) {
+    final head = latin1.decode(
+      bytes.sublist(0, bytes.length < 100 ? bytes.length : 100),
+    );
+    final regex = RegExp(
+      r"""encoding\s*=\s*["'](.*?)["']""",
+      caseSensitive: false,
+    );
+    final match = regex.firstMatch(head);
+    final encoding = match?.group(1)?.toLowerCase();
+
+    return encoding ?? 'utf-8';
+  }
+
   Future<XmlDocument> loadDocument(String filePath) async {
     final file = File(filePath);
     final bytes = await file.readAsBytes();
 
+    final encodingName = _detectEncoding(bytes);
+
     String content;
-    try {
-      // 1. Сначала пробуем UTF-8
+    if (encodingName == 'windows-1251' || encodingName == 'cp1251') {
+      content = windows1251.decode(bytes);
+    } else {
       content = utf8.decode(bytes);
-    } catch (_) {
-      try {
-        // 2. Если упало — это 99% кириллица Windows-1251
-        content = windows1251.decode(bytes);
-      } catch (e) {
-        throw Exception("Не удалось определить кодировку файла.");
-      }
     }
 
-    // ВАЖНО: Если в XML есть заголовок <?xml ... encoding="windows-1251"?>,
-    // библиотека xml может выдать ошибку, так как мы уже декодировали строку в UTF-8.
-    // Если падает на парсинге, можно вырезать заголовок:
-    final cleanContent = content.replaceFirst(RegExp(r'<\?xml.*?\?>'), '');
-
-    return XmlDocument.parse(cleanContent);
+    return XmlDocument.parse(content);
   }
 
-  /// Пример логики слияния: добавляет всех детей из корня донора в корень базы
-  void mergeDocuments(XmlDocument base, XmlDocument donor) {
-    final baseRoot = base.rootElement;
-    final donorRoot = donor.rootElement;
+  Future<void> saveDocument(XmlDocument document, String filePath) async {
+    final declaration = document.declaration;
+    final encoding = declaration?.getAttribute('encoding') ?? 'utf-8';
+    final xmlString = document.toXmlString(
+      pretty: true,
+      spaceBeforeSelfClose: (node) => true,
+    );
 
-    // Копируем узлы донора и вставляем в базу
-    for (var node in donorRoot.children) {
-      baseRoot.children.add(node.copy());
+    List<int> outputBytes;
+    if (encoding.toLowerCase() == 'windows-1251') {
+      outputBytes = windows1251.encode(xmlString);
+    } else {
+      outputBytes = utf8.encode(xmlString);
     }
+
+    await File(filePath).writeAsBytes(outputBytes);
   }
 }

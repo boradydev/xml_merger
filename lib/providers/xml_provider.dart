@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:windows1251/windows1251.dart';
 import 'package:xml/xml.dart';
 import '../dtos/xml_doc.dart';
 import '../services/xml_service.dart';
@@ -16,7 +13,6 @@ class XmlProvider extends ChangeNotifier {
   String? _secondFilePath;
 
   XmlDocument? _firstDoc;
-  XmlDocument? _secondDoc;
 
   XmlDocumentDto get firstDto => _firstXmlDto;
 
@@ -60,7 +56,6 @@ class XmlProvider extends ChangeNotifier {
 
   Future<void> loadSecondFile(String path) async {
     final doc = await _xmlService.loadDocument(path);
-    _secondDoc = doc;
     _secondXmlDto = XmlDocumentDto.fromXml(doc);
     _secondFilePath = path;
     notifyListeners();
@@ -105,15 +100,6 @@ class XmlProvider extends ChangeNotifier {
 
     _firstXmlDto.updateXml(_firstDoc!);
 
-    final file = File(_firstFilePath!);
-    const header = '<?xml version="1.0" encoding="windows-1251"?>\n';
-
-    final xmlContent = _firstDoc!.toXmlString(
-      pretty: true,
-      entityMapping: XmlDefaultEntityMapping.xml(),
-    );
-
-    final bytes = windows1251.encode(header + xmlContent);
-    await file.writeAsBytes(bytes);
+    await _xmlService.saveDocument(_firstDoc!, _firstFilePath!);
   }
 }
