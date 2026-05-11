@@ -31,7 +31,7 @@ class InfoField extends StatelessWidget {
     final Color textColor = colorScheme.onSurface;
 
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+      margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
       padding: const EdgeInsets.fromLTRB(12, 6, 12, 6),
       decoration: BoxDecoration(
         color: backgroundColor,

@@ -33,7 +33,6 @@ class HomeScreen extends StatelessWidget {
           child: const Row(
             children: [
               Expanded(child: XmlFileColumn(isFirst: true)),
-
               SizedBox(width: 20),
               Expanded(child: XmlFileColumn(isFirst: false)),
             ],
@@ -79,19 +78,6 @@ class XmlFileColumn extends StatelessWidget {
           isDateValid: context.select((XmlProvider p) => p.isDateValid),
         ),
         const SizedBox(height: 20),
-        FileSelectorCard(
-          title: isFirst ? l10n.cardFirstTitle : l10n.cardSecondTitle,
-          description: l10n.cardCommonDescription,
-          path: path,
-          onTap: () => isFirst
-              ? xmlProvider.pickFirstXmlFile()
-              : xmlProvider.pickSecondXmlFile(),
-          onFileDropped: (path) => isFirst
-              ? xmlProvider.loadFirstFile(path)
-              : xmlProvider.loadSecondFile(path),
-          icon: isFirst ? Icons.file_copy : Icons.add_box,
-          color: isFirst ? Colors.blue.shade100 : Colors.green.shade100,
-        ),
         if (isFirst)
           ActionButton(
             icon: Icons.save_alt,
@@ -106,6 +92,20 @@ class XmlFileColumn extends StatelessWidget {
             onPressed: path != null ? () => xmlProvider.mergeFields() : null,
             backgroundColor: colorScheme.tertiaryContainer,
           ),
+        const SizedBox(height: 20),
+        FileSelectorCard(
+          title: isFirst ? l10n.cardFirstTitle : l10n.cardSecondTitle,
+          description: l10n.cardCommonDescription,
+          path: path,
+          onTap: () => isFirst
+              ? xmlProvider.pickFirstXmlFile()
+              : xmlProvider.pickSecondXmlFile(),
+          onFileDropped: (path) => isFirst
+              ? xmlProvider.loadFirstFile(path)
+              : xmlProvider.loadSecondFile(path),
+          icon: isFirst ? Icons.file_copy : Icons.add_box,
+          color: isFirst ? Colors.blue.shade100 : Colors.green.shade100,
+        ),
       ],
     );
   }
