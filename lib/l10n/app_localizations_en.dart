@@ -12,10 +12,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appTitle => 'XML Merger';
 
   @override
-  String get cardFirstTitle => 'Ozon UPD';
+  String get cardFirstTitle => 'Ozon UTD';
 
   @override
-  String get cardSecondTitle => '1c UPD';
+  String get cardSecondTitle => '1c UTD';
 
   @override
   String get sellerOrganization => 'Seller Organization';
@@ -36,10 +36,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get date => 'Date';
 
   @override
-  String get firstButton => 'Save';
+  String get firstButton => 'Save Ozon UTD';
 
   @override
-  String get secondButton => 'Merge fields from 1c';
+  String get secondButton => 'Merge fields from 1c UTD';
 
   @override
   String get cardCommonDescription => 'Drop file here or click to select';

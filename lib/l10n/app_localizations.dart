@@ -104,13 +104,13 @@ abstract class AppLocalizations {
   /// No description provided for @cardFirstTitle.
   ///
   /// In en, this message translates to:
-  /// **'Ozon UPD'**
+  /// **'Ozon UTD'**
   String get cardFirstTitle;
 
   /// No description provided for @cardSecondTitle.
   ///
   /// In en, this message translates to:
-  /// **'1c UPD'**
+  /// **'1c UTD'**
   String get cardSecondTitle;
 
   /// No description provided for @sellerOrganization.
@@ -152,13 +152,13 @@ abstract class AppLocalizations {
   /// No description provided for @firstButton.
   ///
   /// In en, this message translates to:
-  /// **'Save'**
+  /// **'Save Ozon UTD'**
   String get firstButton;
 
   /// No description provided for @secondButton.
   ///
   /// In en, this message translates to:
-  /// **'Merge fields from 1c'**
+  /// **'Merge fields from 1c UTD'**
   String get secondButton;
 
   /// No description provided for @cardCommonDescription.

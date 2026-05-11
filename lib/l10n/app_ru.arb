@@ -8,7 +8,7 @@
   "invoiceNumber": "Номер отгрузки",
   "totalAmount": "Итоговая сумма (с НДС)",
   "date": "Дата",
-  "firstButton": "Сохранить",
-  "secondButton": "Перенести данные из 1c",
+  "firstButton": "Сохранить озон УПД",
+  "secondButton": "Перенести данные из 1c УПД",
   "cardCommonDescription": "Перетащите файл сюда или нажмите для выбора"
 }

@@ -36,10 +36,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get date => 'Дата';
 
   @override
-  String get firstButton => 'Сохранить';
+  String get firstButton => 'Сохранить озон УПД';
 
   @override
-  String get secondButton => 'Перенести данные из 1c';
+  String get secondButton => 'Перенести данные из 1c УПД';
 
   @override
   String get cardCommonDescription => 'Перетащите файл сюда или нажмите для выбора';
