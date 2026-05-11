@@ -4,6 +4,7 @@ import '../dtos/xml_doc.dart';
 import '../l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../providers/xml_provider.dart';
+import '../services/app_notify.dart';
 import '../widgets/action_button_widget.dart';
 import '../widgets/info_field.dart';
 import '../widgets/locate_toggle_widget.dart';
@@ -82,14 +83,36 @@ class XmlFileColumn extends StatelessWidget {
           ActionButton(
             icon: Icons.save_alt,
             label: l10n.firstButton,
-            onPressed: canSave ? () => xmlProvider.saveFirstFile() : null,
+            onPressed: canSave
+                ? () async {
+                    await xmlProvider.saveFirstFile();
+                    if (!context.mounted) return;
+                    AppNotify.show(context, "Файл успешно сохранен");
+                  }
+                : null,
             backgroundColor: colorScheme.primaryContainer,
           )
         else
           ActionButton(
             icon: Icons.arrow_back,
             label: l10n.secondButton,
-            onPressed: path != null ? () => xmlProvider.mergeFields() : null,
+            onPressed: path != null
+                ? () {
+                    if (!xmlProvider.isTotalValid) {
+                      AppNotify.show(
+                        context,
+                        "Внимание: суммы в документах различаются!",
+                        isWarning: true,
+                      );
+                      return;
+                    }
+                    xmlProvider.mergeFields();
+                    AppNotify.show(
+                      context,
+                      "Данные из второго файла перенесены",
+                    );
+                  }
+                : null,
             backgroundColor: colorScheme.tertiaryContainer,
           ),
         const SizedBox(height: 20),
