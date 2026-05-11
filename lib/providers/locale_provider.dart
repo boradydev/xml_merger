@@ -9,4 +9,11 @@ class LocaleProvider extends ChangeNotifier {
     _locale = locale;
     notifyListeners();
   }
+
+  void toggleLocale() {
+    _locale = _locale.languageCode == 'ru'
+        ? const Locale('en')
+        : const Locale('ru');
+    notifyListeners();
+  }
 }

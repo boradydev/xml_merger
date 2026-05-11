@@ -18,13 +18,37 @@ class XmlProvider extends ChangeNotifier {
   XmlDocument? _firstDoc;
   XmlDocument? _secondDoc;
 
-  XmlDocumentDto get firstXmlDto => _firstXmlDto;
+  XmlDocumentDto get firstDto => _firstXmlDto;
 
-  XmlDocumentDto get secondXmlDto => _secondXmlDto;
+  XmlDocumentDto get secondDto => _secondXmlDto;
 
-  String? get firstFilePath => _firstFilePath;
+  bool get isBuyerValid {
+    return _firstXmlDto.buyerName == _secondXmlDto.buyerName;
+  }
 
-  String? get secondFilePath => _secondFilePath;
+  bool get isSellerValid {
+    return _firstXmlDto.sellerName == _secondXmlDto.sellerName;
+  }
+
+  bool get isDocNumValid {
+    return _firstXmlDto.docNumber == _secondXmlDto.docNumber;
+  }
+
+  bool get isInvoiceNumValid {
+    return _firstXmlDto.invoiceNumber == _secondXmlDto.invoiceNumber;
+  }
+
+  bool get isTotalValid {
+    return _firstXmlDto.totalAmount == _secondXmlDto.totalAmount;
+  }
+
+  bool get isDateValid {
+    return _firstXmlDto.date == _secondXmlDto.date;
+  }
+
+  String? get firstPath => _firstFilePath;
+
+  String? get secondPath => _secondFilePath;
 
   Future<void> loadFirstFile(String path) async {
     final doc = await _xmlService.loadDocument(path);
@@ -56,7 +80,7 @@ class XmlProvider extends ChangeNotifier {
 
   Future<void> pickSecondXmlFile() => _pickFile(loadSecondFile);
 
-  bool get areFieldsIdentical {
+  bool get canSave {
     if (!_firstXmlDto.isPopulated) return false;
     if (!_secondXmlDto.isPopulated) return false;
 
