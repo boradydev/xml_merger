@@ -10,5 +10,9 @@
   "date": "Дата",
   "firstButton": "Сохранить озон УПД",
   "secondButton": "Перенести данные из 1c УПД",
-  "cardCommonDescription": "Перетащите файл сюда или нажмите для выбора"
+  "cardCommonDescription": "Перетащите файл сюда или нажмите для выбора",
+  "notifySaveSuccess": "Файл успешно сохранен",
+  "notifySaveError": "Ошибка сохранения файла",
+  "notifyWarning": "Внимание: суммы в документах различаются!",
+  "notifyMergeSuccess": "Данные из 1с УПД перенесены"
 }

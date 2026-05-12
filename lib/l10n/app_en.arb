@@ -10,5 +10,9 @@
   "date": "Date",
   "firstButton": "Save Ozon UTD",
   "secondButton": "Merge fields from 1c UTD",
-  "cardCommonDescription": "Drop file here or click to select"
+  "cardCommonDescription": "Drop file here or click to select",
+  "notifySaveSuccess": "File saved successfully",
+  "notifySaveError": "Error saving file",
+  "notifyWarning": "Warning: amounts in documents differ!",
+  "notifyMergeSuccess": "Fields from 1c UTD merged"
 }

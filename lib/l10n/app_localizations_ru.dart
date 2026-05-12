@@ -43,4 +43,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get cardCommonDescription => 'Перетащите файл сюда или нажмите для выбора';
+
+  @override
+  String get notifySaveSuccess => 'Файл успешно сохранен';
+
+  @override
+  String get notifySaveError => 'Ошибка сохранения файла';
+
+  @override
+  String get notifyWarning => 'Внимание: суммы в документах различаются!';
+
+  @override
+  String get notifyMergeSuccess => 'Данные из 1с УПД перенесены';
 }

@@ -43,4 +43,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cardCommonDescription => 'Drop file here or click to select';
+
+  @override
+  String get notifySaveSuccess => 'File saved successfully';
+
+  @override
+  String get notifySaveError => 'Error saving file';
+
+  @override
+  String get notifyWarning => 'Warning: amounts in documents differ!';
+
+  @override
+  String get notifyMergeSuccess => 'Fields from 1c UTD merged';
 }

@@ -85,9 +85,19 @@ class XmlFileColumn extends StatelessWidget {
             label: l10n.firstButton,
             onPressed: canSave
                 ? () async {
-                    await xmlProvider.saveFirstFile();
+                    try {
+                      await xmlProvider.saveFirstFile();
+                    } catch (e) {
+                      if (!context.mounted) return;
+                      AppNotify.show(
+                        context,
+                        l10n.notifySaveError,
+                        isError: true,
+                      );
+                      return;
+                    }
                     if (!context.mounted) return;
-                    AppNotify.show(context, "Файл успешно сохранен");
+                    AppNotify.show(context, l10n.notifySaveSuccess);
                   }
                 : null,
             backgroundColor: colorScheme.primaryContainer,
@@ -101,16 +111,13 @@ class XmlFileColumn extends StatelessWidget {
                     if (!xmlProvider.isTotalValid) {
                       AppNotify.show(
                         context,
-                        "Внимание: суммы в документах различаются!",
+                        l10n.notifyWarning,
                         isWarning: true,
                       );
                       return;
                     }
                     xmlProvider.mergeFields();
-                    AppNotify.show(
-                      context,
-                      "Данные из второго файла перенесены",
-                    );
+                    AppNotify.show(context, l10n.notifyMergeSuccess);
                   }
                 : null,
             backgroundColor: colorScheme.tertiaryContainer,

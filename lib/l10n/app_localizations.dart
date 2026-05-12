@@ -166,6 +166,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Drop file here or click to select'**
   String get cardCommonDescription;
+
+  /// No description provided for @notifySaveSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'File saved successfully'**
+  String get notifySaveSuccess;
+
+  /// No description provided for @notifySaveError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error saving file'**
+  String get notifySaveError;
+
+  /// No description provided for @notifyWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Warning: amounts in documents differ!'**
+  String get notifyWarning;
+
+  /// No description provided for @notifyMergeSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Fields from 1c UTD merged'**
+  String get notifyMergeSuccess;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
