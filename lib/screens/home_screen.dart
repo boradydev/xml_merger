@@ -4,7 +4,7 @@ import '../dtos/xml_doc.dart';
 import '../l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../providers/xml_provider.dart';
-import '../services/app_notify.dart';
+import '../infrastructure//app_notify.dart';
 import '../widgets/action_button_widget.dart';
 import '../widgets/info_field.dart';
 import '../widgets/locate_toggle_widget.dart';

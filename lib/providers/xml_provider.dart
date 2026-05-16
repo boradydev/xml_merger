@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:xml/xml.dart';
 import '../dtos/xml_doc.dart';
-import '../services/xml_service.dart';
+import '../infrastructure//xml_parser.dart';
 
 class XmlProvider extends ChangeNotifier {
   final _xmlService = XmlService();
