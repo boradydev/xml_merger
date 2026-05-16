@@ -55,4 +55,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get notifyMergeSuccess => 'Данные из 1с УПД перенесены';
+
+  @override
+  String get resetButton => 'Сбросить';
+
+  @override
+  String get themBottom => 'Тема';
 }

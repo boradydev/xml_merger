@@ -16,14 +16,26 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDarkMode = context.select((ThemeProvider p) => p.isDarkMode);
+    final l10n = AppLocalizations.of(context)!;
+    final xmlProvider = context.read<XmlProvider>();
+
+    final hasData = context.select(
+      (XmlProvider p) => p.firstPath != null || p.secondPath != null,
+    );
 
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.restart_alt),
+            tooltip: l10n.resetButton,
+            onPressed: hasData ? () => xmlProvider.resetAll() : null,
+          ),
           const LocaleToggleButton(),
           IconButton(
             icon: Icon(isDarkMode ? Icons.wb_sunny : Icons.nightlight_round),
+            tooltip: l10n.themBottom,
             onPressed: () => context.read<ThemeProvider>().toggleTheme(),
           ),
         ],
@@ -170,33 +182,39 @@ class InfoFieldGroup extends StatelessWidget {
         InfoField(
           label: l10n.sellerOrganization,
           value: dto.sellerName,
+          isEnable: dto.sellerName != '',
           isWarning: true,
           isValid: isSellerValid,
         ),
         InfoField(
           label: l10n.buyerOrganization,
           value: dto.buyerName,
+          isEnable: dto.buyerName != '',
           isWarning: true,
           isValid: isBuyerValid,
         ),
         InfoField(
           label: l10n.documentNumber,
           value: dto.docNumber,
+          isEnable: dto.docNumber != '',
           isValid: isDocNumValid,
         ),
         InfoField(
           label: l10n.invoiceNumber,
           value: dto.invoiceNumber,
+          isEnable: dto.invoiceNumber != '',
           isValid: isInvoiceNumValid,
         ),
         InfoField(
           label: l10n.totalAmount,
           value: dto.totalAmount,
+          isEnable: dto.totalAmount != '',
           isValid: isTotalValid,
         ),
         InfoField(
           label: l10n.date,
           value: dto.date,
+          isEnable: dto.date != '',
           isWarning: true,
           isValid: isDateValid,
         ),

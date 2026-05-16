@@ -14,5 +14,7 @@
   "notifySaveSuccess": "File saved successfully",
   "notifySaveError": "Error saving file",
   "notifyWarning": "Warning: amounts in documents differ!",
-  "notifyMergeSuccess": "Fields from 1c UTD merged"
+  "notifyMergeSuccess": "Fields from 1c UTD merged",
+  "resetButton": "Restart",
+  "themBottom": "Theme"
 }

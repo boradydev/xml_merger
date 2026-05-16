@@ -55,4 +55,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notifyMergeSuccess => 'Fields from 1c UTD merged';
+
+  @override
+  String get resetButton => 'Restart';
+
+  @override
+  String get themBottom => 'Theme';
 }

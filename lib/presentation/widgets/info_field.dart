@@ -5,6 +5,7 @@ class InfoField extends StatelessWidget {
   final String value;
   final bool isValid;
   final bool isWarning;
+  final bool isEnable;
 
   const InfoField({
     super.key,
@@ -12,21 +13,26 @@ class InfoField extends StatelessWidget {
     required this.value,
     required this.isValid,
     this.isWarning = false,
+    this.isEnable = true,
   });
 
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    final Color backgroundColor = isValid
-        ? colorScheme.primaryContainer
-        : (isWarning
-              ? colorScheme.tertiaryContainer
-              : colorScheme.errorContainer);
+    final Color backgroundColor = switch (this) {
+      _ when !isEnable => colorScheme.surfaceContainerHighest,
+      _ when isValid => colorScheme.primaryContainer,
+      _ when isWarning => colorScheme.tertiaryContainer,
+      _ => colorScheme.errorContainer,
+    };
 
-    final Color borderColor = isValid
-        ? colorScheme.primary
-        : (isWarning ? colorScheme.tertiary : colorScheme.error);
+    final Color borderColor = switch (this) {
+      _ when !isEnable => colorScheme.surfaceDim,
+      _ when isValid => colorScheme.primary,
+      _ when isWarning => colorScheme.tertiary,
+      _ => colorScheme.error,
+    };
 
     final Color textColor = colorScheme.onSurface;
 

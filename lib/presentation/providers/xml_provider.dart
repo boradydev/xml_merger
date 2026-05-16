@@ -103,4 +103,12 @@ class XmlProvider extends ChangeNotifier {
 
     await _xmlService.saveDocument(_firstDoc!, _firstFilePath!);
   }
+
+  void resetAll() {
+    _firstXmlDto = XmlDocumentDto();
+    _secondXmlDto = XmlDocumentDto();
+    _firstFilePath = null;
+    _secondFilePath = null;
+    notifyListeners();
+  }
 }

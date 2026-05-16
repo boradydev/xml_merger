@@ -190,6 +190,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fields from 1c UTD merged'**
   String get notifyMergeSuccess;
+
+  /// No description provided for @resetButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Restart'**
+  String get resetButton;
+
+  /// No description provided for @themBottom.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get themBottom;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

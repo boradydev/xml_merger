@@ -14,5 +14,7 @@
   "notifySaveSuccess": "Файл успешно сохранен",
   "notifySaveError": "Ошибка сохранения файла",
   "notifyWarning": "Внимание: суммы в документах различаются!",
-  "notifyMergeSuccess": "Данные из 1с УПД перенесены"
+  "notifyMergeSuccess": "Данные из 1с УПД перенесены",
+  "resetButton": "Сбросить",
+  "themBottom": "Тема"
 }
