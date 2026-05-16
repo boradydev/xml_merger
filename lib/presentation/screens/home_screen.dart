@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:xml_merger/dtos/xml_doc.dart';
+import 'package:xml_merger/infrastructure/xml_parser/dto.dart';
 import 'package:xml_merger/infrastructure/app_notify.dart';
 import 'package:xml_merger/l10n/app_localizations.dart';
 import 'package:xml_merger/presentation/providers/theme_provider.dart';

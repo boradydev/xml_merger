@@ -1,5 +1,9 @@
 import 'package:xml/xml.dart';
 
+/// Объект переноса данных (DTO) для представления информации из XML-документа.
+///
+/// Класс инкапсулирует парсинг специфичной структуры бухгалтерского XML
+/// (например, счет-фактуры) и предоставляет плоскую модель данных для UI.
 class XmlDocumentDto {
   final String sellerName;
   final String buyerName;
@@ -17,6 +21,7 @@ class XmlDocumentDto {
     this.date = '',
   });
 
+  /// Фабричный метод для создания DTO из сырого объекта [XmlDocument].
   factory XmlDocumentDto.fromXml(XmlDocument doc) {
     final docBody = doc.rootElement.findElements('Документ').firstOrNull;
     final sf = docBody?.findElements('СвСчФакт').firstOrNull;
@@ -52,6 +57,8 @@ class XmlDocumentDto {
     );
   }
 
+  /// Модифицирует атрибуты оригинального XML-дерева
+  /// для последующего сохранения файла на диск.
   void updateXml(XmlDocument doc) {
     final docBody = doc.rootElement.findElements('Документ').firstOrNull;
     final sf = docBody?.findElements('СвСчФакт').firstOrNull;
