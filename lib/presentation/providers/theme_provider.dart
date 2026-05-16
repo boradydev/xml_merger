@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../core/theme.dart'; // Импортируем ваши настройки
+import 'package:xml_merger/core/theme.dart';
 
 class ThemeProvider extends ChangeNotifier {
   final SharedPreferences prefs;

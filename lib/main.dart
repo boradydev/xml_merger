@@ -4,18 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:xml_merger/providers/xml_provider.dart';
-
-import 'infrastructure/window_settings_service.dart';
-import 'l10n/app_localizations.dart';
-import 'providers/theme_provider.dart';
-import 'providers/locale_provider.dart';
-
-import 'screens/home_screen.dart';
+import 'package:xml_merger/infrastructure/window_settings_service.dart';
+import 'package:xml_merger/l10n/app_localizations.dart';
+import 'package:xml_merger/presentation/providers/locale_provider.dart';
+import 'package:xml_merger/presentation/providers/theme_provider.dart';
+import 'package:xml_merger/presentation/providers/xml_provider.dart';
 
 import 'dart:async';
 
-
+import 'package:xml_merger/presentation/screens/home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

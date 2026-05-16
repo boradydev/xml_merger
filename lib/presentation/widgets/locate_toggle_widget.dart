@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../providers/locale_provider.dart';
+import 'package:xml_merger/presentation/providers/locale_provider.dart';
 
 class LocaleToggleButton extends StatelessWidget {
   const LocaleToggleButton({super.key});

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../dtos/xml_doc.dart';
-import '../l10n/app_localizations.dart';
-import '../providers/theme_provider.dart';
-import '../providers/xml_provider.dart';
-import '../infrastructure//app_notify.dart';
-import '../widgets/action_button_widget.dart';
-import '../widgets/info_field.dart';
-import '../widgets/locate_toggle_widget.dart';
-import '../widgets/pick_file_widget.dart';
+import 'package:xml_merger/dtos/xml_doc.dart';
+import 'package:xml_merger/infrastructure/app_notify.dart';
+import 'package:xml_merger/l10n/app_localizations.dart';
+import 'package:xml_merger/presentation/providers/theme_provider.dart';
+import 'package:xml_merger/presentation/providers/xml_provider.dart';
+import 'package:xml_merger/presentation/widgets/action_button_widget.dart';
+import 'package:xml_merger/presentation/widgets/info_field.dart';
+import 'package:xml_merger/presentation/widgets/locate_toggle_widget.dart';
+import 'package:xml_merger/presentation/widgets/pick_file_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

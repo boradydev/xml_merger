@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:xml_merger/presentation/widgets/snack_bar_widget.dart';
 
-import '../widgets/snack_bar_widget.dart';
-
+/// Глобальный менеджер для отображения всплывающих уведомлений (SnackBars).
+///
+/// Предоставляет унифицированный интерфейс для показа системных уведомлений
+/// без необходимости вручную вызывать [ScaffoldMessenger]
+/// и управлять очередью сообщений.
 class AppNotify {
   static void show(
     BuildContext context,
