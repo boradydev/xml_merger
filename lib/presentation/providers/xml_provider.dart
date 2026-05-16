@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:xml/xml.dart';
 import 'package:xml_merger/infrastructure/xml_parser/dto.dart';
+import 'package:xml_merger/infrastructure/xml_parser/mapper.dart';
 import 'package:xml_merger/infrastructure/xml_parser/service.dart';
 
 class XmlProvider extends ChangeNotifier {
@@ -49,14 +50,14 @@ class XmlProvider extends ChangeNotifier {
   Future<void> loadFirstFile(String path) async {
     final doc = await _xmlService.loadDocument(path);
     _firstDoc = doc;
-    _firstXmlDto = XmlDocumentDto.fromXml(doc);
+    _firstXmlDto = XmlMapper.fromXml(doc);
     _firstFilePath = path;
     notifyListeners();
   }
 
   Future<void> loadSecondFile(String path) async {
     final doc = await _xmlService.loadDocument(path);
-    _secondXmlDto = XmlDocumentDto.fromXml(doc);
+    _secondXmlDto = XmlMapper.fromXml(doc);
     _secondFilePath = path;
     notifyListeners();
   }
@@ -98,7 +99,7 @@ class XmlProvider extends ChangeNotifier {
   Future<void> saveFirstFile() async {
     if (_firstDoc == null || _firstFilePath == null) return;
 
-    _firstXmlDto.updateXml(_firstDoc!);
+    XmlMapper.updateXml(_firstDoc!, _firstXmlDto);
 
     await _xmlService.saveDocument(_firstDoc!, _firstFilePath!);
   }
