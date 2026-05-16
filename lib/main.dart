@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:xml_merger/providers/xml_provider.dart';
 
+import 'infrastructure/window_settings_service.dart';
 import 'l10n/app_localizations.dart';
 import 'providers/theme_provider.dart';
 import 'providers/locale_provider.dart';
@@ -14,31 +15,7 @@ import 'screens/home_screen.dart';
 
 import 'dart:async';
 
-class WindowObserver extends WindowListener {
-  Timer? _debounce;
 
-  void _saveSettings() {
-    if (_debounce?.isActive ?? false) _debounce!.cancel();
-
-    _debounce = Timer(const Duration(milliseconds: 1000), () async {
-      final prefs = await SharedPreferences.getInstance();
-
-      final size = await windowManager.getSize();
-      final pos = await windowManager.getPosition();
-
-      await prefs.setDouble('window_width', size.width);
-      await prefs.setDouble('window_height', size.height);
-      await prefs.setDouble('window_x', pos.dx);
-      await prefs.setDouble('window_y', pos.dy);
-    });
-  }
-
-  @override
-  void onWindowResized() => _saveSettings();
-
-  @override
-  void onWindowMoved() => _saveSettings();
-}
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -68,7 +45,7 @@ Future<void> main() async {
       await windowManager.focus();
     });
 
-    windowManager.addListener(WindowObserver());
+    windowManager.addListener(WindowSettingsService());
   }
   runApp(
     MultiProvider(
