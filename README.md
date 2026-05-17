@@ -1,17 +1,44 @@
-# xml_merger
+# XML Merger (1C to Ozon UPD)
 
-A new Flutter project.
+Удобное десктопное приложение для автоматического обогащения и подготовки XML-документов УПД (
+Универсальный Передаточный Документ) под требования маркетплейса Ozon.
 
-## Getting Started
+## Суть проекта
 
-This project is a starting point for a Flutter application.
+Приложение решает проблему рутинного заполнения документов при отгрузках на Ozon. Оно автоматически
+берет XML-выгрузку из 1С, находит недостающие обязательные поля и переносит их в целевой XML-файл
+для Ozon.
 
-A few resources to get you started if this is your first Flutter project:
+## ⚡ Основные функции
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+* **Умное слияние данных:** Автоматически находит и переносит нужные реквизиты.
+* **Загрузка в один клик (Drag-and-Drop):** Добавляйте XML-файлы простым перетаскиванием мыши в окно
+  приложения.
+* **Интуитивный интерфейс:** Интерактивные карточки визуально подсказывают статус загрузки каждого
+  файла.
+* **Кастомизация UI:** Поддержка Темной и Светлой тем оформления для комфортной работы в любое время
+  суток.
+* **Два языка:** Полная поддержка Русского и Английского интерфейсов.
+* **Сохранение настроек:** Приложение запоминает выбранный язык и тему при следующем запуске.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Скриншоты интерфейса
+
+### Успешное выполнение
+
+![Главный экран](./screenshots/success.png)
+
+### Уведомления системы
+
+![Главный экран](./screenshots/snack_bar.png)
+
+### Английский интерфейс
+
+![Главный экран](./screenshots/eng_lang.png)
+
+### Темная тема
+
+![Главный экран](./screenshots/dark_theme.png)
+
+### Стартовы экран
+
+![Главный экран](./screenshots/reset.png)

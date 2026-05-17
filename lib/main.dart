@@ -29,7 +29,7 @@ Future<void> main() async {
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     WindowOptions windowOptions = WindowOptions(
       size: Size(width, height),
-      minimumSize: Size(1000, 600),
+      minimumSize: Size(1000, 630),
       center: posX == null,
       title: "XML Merger",
     );
